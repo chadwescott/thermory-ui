@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AccordionModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './components/catalog/catalog.component';

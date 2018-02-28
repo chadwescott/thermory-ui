@@ -9,31 +9,44 @@
         <!-- @Html.Partial("_LoginPartial") -->
       </section>
       <!-- @if (User.Identity.IsAuthenticated) { -->
-        <nav class="navbar navbar-default" style="margin-bottom: 10px;">
-          <div class="container-fluid">
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div>
-              <ul class="nav navbar-nav">
-                <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.InventoryViewer) || User.IsInRole(Role.WarehouseCrew)) { -->
-                  <li role="presentation"><a (click)="showInventory()">Inventory</a></li>
-                  <!-- } -->
-                  <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.WarehouseCrew)) { -->
-                    <li role="presentation"><a (click)="showPurchaseOrderList()">Incoming</a></li>
-                    <li role="presentation"><a (click)="showSalesOrderList()">Sales Orders</a></li>
-                    <!-- } -->
-                    <!-- @if (User.IsInRole(Role.InventoryMaster)) { -->
-                      <li role="presentation"><a (click)="showAudit()">Audit</a></li>
-                      <li role="presentation"><a (click)="showCatalog()">Catalog</a></li>
-                      <li role="presentation"><a (click)="showUserList()">Users</a></li>
-                      <!-- } -->
-                    </ul>
-                  </div>
-                </div>
-              </nav>
+      <nav class="navbar navbar-default" style="margin-bottom: 10px;">
+        <div class="container-fluid">
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div>
+            <ul class="nav navbar-nav">
+              <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.InventoryViewer) || User.IsInRole(Role.WarehouseCrew)) { -->
+              <li role="presentation"><a (click)="showInventory()">Inventory</a></li>
               <!-- } -->
-            </div>
+              <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.WarehouseCrew)) { -->
+              <li role="presentation"><a (click)="showPurchaseOrderList()">Incoming</a></li>
+              <li role="presentation"><a (click)="showSalesOrderList()">Sales Orders</a></li>
+              <!-- } -->
+              <!-- @if (User.IsInRole(Role.InventoryMaster)) { -->
+              <li role="presentation"><a (click)="showAudit()">Audit</a></li>
+              <li role="presentation"><a (click)="showCatalog()">Catalog</a></li>
+              <li role="presentation"><a (click)="showUserList()">Users</a></li>
+              <!-- } -->
+            </ul>
           </div>
-        </header>
-        <div style="text-align:center">
-          <router-outlet></router-outlet>
-        </div> 
+        </div>
+      </nav>
+      <!-- } -->
+      </div>
+    </div>
+  </header>
+  <div style="text-align:center">
+    <router-outlet></router-outlet>
+  </div> 
+  <div id="body" style="margin-bottom: 20px;">
+    <!-- @RenderSection("featured", required: false) -->
+    <section class="content-wrapper clear-fix">
+        <!-- @RenderBody() -->
+    </section>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="float-left" style="margin-top: 10px;">
+            &copy; 2018 - Thermory
+        </div>
+    </div>
+</nav>
