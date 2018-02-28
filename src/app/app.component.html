@@ -2,51 +2,43 @@
 <header>
   <div class="content-wrapper">
     <div class="float-left">
-      <!-- <p class="site-title">@Html.ActionLink("Thermory", "Index", "Home", null, new { @class = "logo" })</p> -->
+      <p class="site-title"><a (click)="showHome()" class="logo"></a></p>
     </div>
     <div class="float-right">
-      <section id="login">
-        <!-- @Html.Partial("_LoginPartial") -->
-      </section>
       <!-- @if (User.Identity.IsAuthenticated) { -->
-      <nav class="navbar navbar-default" style="margin-bottom: 10px;">
+      <nav class="navbar navbar-expand-lg" style="margin-bottom: 10px;">
         <div class="container-fluid">
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div>
             <ul class="nav navbar-nav">
               <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.InventoryViewer) || User.IsInRole(Role.WarehouseCrew)) { -->
-              <li role="presentation"><a (click)="showInventory()">Inventory</a></li>
-              <!-- } -->
+              <li class="nav-item"><a class="nav-link" (click)="showInventory()">Inventory</a></li>
               <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.WarehouseCrew)) { -->
-              <li role="presentation"><a (click)="showPurchaseOrderList()">Incoming</a></li>
-              <li role="presentation"><a (click)="showSalesOrderList()">Sales Orders</a></li>
-              <!-- } -->
+              <li class="nav-item"><a class="nav-link" (click)="showPurchaseOrderList()">Incoming</a></li>
+              <li class="nav-item"><a class="nav-link" (click)="showSalesOrderList()">Sales Orders</a></li>
               <!-- @if (User.IsInRole(Role.InventoryMaster)) { -->
-              <li role="presentation"><a (click)="showAudit()">Audit</a></li>
-              <li role="presentation"><a (click)="showCatalog()">Catalog</a></li>
-              <li role="presentation"><a (click)="showUserList()">Users</a></li>
-              <!-- } -->
+              <li class="nav-item"><a class="nav-link" (click)="showAudit()">Audit</a></li>
+              <li class="nav-item"><a class="nav-link" (click)="showCatalog()">Catalog</a></li>
+              <li class="nav-item"><a class="nav-link" (click)="showUserList()">Users</a></li>
             </ul>
           </div>
         </div>
       </nav>
-      <!-- } -->
-      </div>
     </div>
-  </header>
-  <div style="text-align:center">
+  </div>
+</header>
+<div style="text-align:center">
+</div> 
+<div id="body" style="margin-bottom: 20px;">
+  <!-- @RenderSection("featured", required: false) -->
+  <section class="content-wrapper clear-fix">
     <router-outlet></router-outlet>
-  </div> 
-  <div id="body" style="margin-bottom: 20px;">
-    <!-- @RenderSection("featured", required: false) -->
-    <section class="content-wrapper clear-fix">
-        <!-- @RenderBody() -->
-    </section>
+  </section>
 </div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<!-- <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="float-left" style="margin-top: 10px;">
             &copy; 2018 - Thermory
         </div>
     </div>
-</nav>
+</nav> -->

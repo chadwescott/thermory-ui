@@ -18,6 +18,10 @@ export class AppComponent {
     this.router.navigate(['catalog']);
   }
 
+  showHome() {
+    this.router.navigate([''])
+  }
+
   showInventory() {
     this.router.navigate(['inventory'])
   }
