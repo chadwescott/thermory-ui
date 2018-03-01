@@ -1,3 +1,6 @@
-<p>
-  catalog works!
-</p>
+<ngb-tabset>
+  <ngb-tab *ngFor="let c of lumberCategoryService.lumberCategories" title="{{c.name}}">
+    <ng-template ngbTabContent>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

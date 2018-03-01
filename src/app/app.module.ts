@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AccordionModule } from 'ngx-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
@@ -10,6 +10,7 @@ import { PurchaseOrderListComponent } from './components/purchase-order-list/pur
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { InventoryAuditComponent } from './components/inventory-audit/inventory-audit.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { LumberCategoryService } from './services/lumber-category.service';
 
 const routes: Routes = [
   { path: '', component: CatalogComponent },
@@ -34,9 +35,10 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(routes, {useHash: true})
   ],
-  providers: [],
+  providers: [LumberCategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

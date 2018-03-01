@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LumberCategoryService } from '../../services/lumber-category.service';
 
 @Component({
   selector: 'app-catalog',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lumberCategoryService: LumberCategoryService) { }
 
   ngOnInit() {
   }
