@@ -1,18 +1,13 @@
 <ngb-tabset>
-  <ngb-tab *ngFor="let c of lumberCategoryService.lumberCategories" title="{{c.name}}">
+  <ngb-tab *ngFor="let c of lumberCategoryService.lumberCategories" [title]="c.name">
     <ng-template ngbTabContent>
-      <ngb-accordion [closeOthers]="true" activeIds="c.Id">
-        <ngb-panel id="c.id" title="Edit {{c.name}}">
-          <ng-template ngbPanelContent>
-            <app-lumber-category-form [lumberCategory]="c"></app-lumber-category-form>
-          </ng-template>
-        </ngb-panel>
-        <ngb-panel id="sc{{c.id}}" title="Sub Categories">
-          <ng-template ngbPanelContent>
-            <p>Sub categories</p>
-          </ng-template>
-        </ngb-panel>
-      </ngb-accordion>
+      <app-lumber-category-form-tab [lumberCategory]="c"></app-lumber-category-form-tab>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>Add</ng-template>
+    <ng-template ngbTabContent>
+      <app-lumber-category-form-tab></app-lumber-category-form-tab>
     </ng-template>
   </ngb-tab>
 </ngb-tabset>

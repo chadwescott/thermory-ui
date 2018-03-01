@@ -1,0 +1,12 @@
+<ngb-accordion [closeOthers]="true" [activeIds]="lumberCategory.id">
+  <ngb-panel [id]="lumberCategory.id" [title]="title">
+    <ng-template ngbPanelContent>
+      <app-lumber-category-form [lumberCategory]="lumberCategory"></app-lumber-category-form>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel title="Sub Categories">
+    <ng-template ngbPanelContent>
+      <p>Sub categories</p>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

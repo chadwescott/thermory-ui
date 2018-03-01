@@ -12,7 +12,10 @@ import { InventoryComponent } from './components/inventory/inventory.component';
 import { InventoryAuditComponent } from './components/inventory-audit/inventory-audit.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { LumberCategoryService } from './services/lumber-category.service';
+import { LumberSubCategoryService } from './services/lumber-sub-category.service';
 import { LumberCategoryFormComponent } from './components/lumber-category-form/lumber-category-form.component';
+import { LumberSubCategoryListComponent } from './components/lumber-sub-category-list/lumber-sub-category-list.component';
+import { LumberCategoryFormTabComponent } from './components/lumber-category-form-tab/lumber-category-form-tab.component';
 
 const routes: Routes = [
   { path: '', component: CatalogComponent },
@@ -34,7 +37,9 @@ const routes: Routes = [
     InventoryComponent,
     InventoryAuditComponent,
     UserListComponent,
-    LumberCategoryFormComponent
+    LumberCategoryFormComponent,
+    LumberSubCategoryListComponent,
+    LumberCategoryFormTabComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,7 @@ const routes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(routes, {useHash: true})
   ],
-  providers: [LumberCategoryService],
+  providers: [LumberCategoryService, LumberSubCategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
