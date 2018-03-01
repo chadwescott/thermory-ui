@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -11,6 +12,7 @@ import { InventoryComponent } from './components/inventory/inventory.component';
 import { InventoryAuditComponent } from './components/inventory-audit/inventory-audit.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { LumberCategoryService } from './services/lumber-category.service';
+import { LumberCategoryFormComponent } from './components/lumber-category-form/lumber-category-form.component';
 
 const routes: Routes = [
   { path: '', component: CatalogComponent },
@@ -31,10 +33,12 @@ const routes: Routes = [
     PurchaseOrderListComponent,
     InventoryComponent,
     InventoryAuditComponent,
-    UserListComponent
+    UserListComponent,
+    LumberCategoryFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(routes, {useHash: true})
   ],
