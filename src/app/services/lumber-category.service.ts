@@ -10,4 +10,9 @@ export class LumberCategoryService {
 
   constructor() { }
 
+  save(lumberCategory: LumberCategory) {
+    if (lumberCategory.id === '') {
+      this.lumberCategories.push(lumberCategory);
+    }
+  }
 }

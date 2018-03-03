@@ -5,7 +5,7 @@ import { LumberCategory } from '../../models/lumber-category';
 @Component({
   selector: 'app-lumber-category-form',
   templateUrl: './lumber-category-form.component.html',
-  styleUrls: ['./lumber-category-form.component.css']
+  styleUrls: ['./lumber-category-form.component.scss']
 })
 export class LumberCategoryFormComponent implements OnInit {
   @Input() lumberCategory: LumberCategory;

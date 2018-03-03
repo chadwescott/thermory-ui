@@ -1,8 +1,10 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
@@ -16,6 +18,7 @@ import { LumberSubCategoryService } from './services/lumber-sub-category.service
 import { LumberCategoryFormComponent } from './components/lumber-category-form/lumber-category-form.component';
 import { LumberSubCategoryListComponent } from './components/lumber-sub-category-list/lumber-sub-category-list.component';
 import { LumberCategoryFormTabComponent } from './components/lumber-category-form-tab/lumber-category-form-tab.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 const routes: Routes = [
   { path: '', component: CatalogComponent },
@@ -39,12 +42,17 @@ const routes: Routes = [
     UserListComponent,
     LumberCategoryFormComponent,
     LumberSubCategoryListComponent,
-    LumberCategoryFormTabComponent
+    LumberCategoryFormTabComponent,
+    PageHeaderComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    NgbModule.forRoot(),
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule,
     RouterModule.forRoot(routes, {useHash: true})
   ],
   providers: [LumberCategoryService, LumberSubCategoryService],

@@ -5,7 +5,7 @@ import { LumberCategoryService } from '../../services/lumber-category.service';
 @Component({
   selector: 'app-lumber-category-form-tab',
   templateUrl: './lumber-category-form-tab.component.html',
-  styleUrls: ['./lumber-category-form-tab.component.css']
+  styleUrls: ['./lumber-category-form-tab.component.scss']
 })
 export class LumberCategoryFormTabComponent implements OnInit {
   @Input() lumberCategory: LumberCategory;
@@ -20,6 +20,10 @@ export class LumberCategoryFormTabComponent implements OnInit {
     }
     else {
       this.title = 'Edit ' + this.lumberCategory.name;
+    }
+
+    function save() {
+
     }
   }
 }

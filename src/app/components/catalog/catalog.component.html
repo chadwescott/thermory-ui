@@ -1,4 +1,26 @@
-<ngb-tabset>
+<!-- <ngb-accordion closeOthers="true" (panelChange)="lumberCategorySelected()">
+  <ngb-panel *ngFor="let c of lumberCategoryService.lumberCategories" [id]="c.id" [title]="c.name">
+    <ng-template ngbPanelContent>
+      <ngb-accordion closeOthers="true">
+        <ngb-panel *ngFor="let sc of c.lumberSubCategories" [id]="sc.id" [title]="sc.name">
+          <ng-template ngbPanelContent></ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion> -->
+<!-- <mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over">
+    <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+    <mat-sidenav-content>
+      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+      <p>
+        Hello World!
+      </p>
+    </mat-sidenav-content>
+  </mat-sidenav>
+</mat-sidenav-container> -->
+<!-- <ngb-tabset>
   <ngb-tab *ngFor="let c of lumberCategoryService.lumberCategories" [title]="c.name">
     <ng-template ngbTabContent>
       <app-lumber-category-form-tab [lumberCategory]="c"></app-lumber-category-form-tab>
@@ -10,4 +32,4 @@
       <app-lumber-category-form-tab></app-lumber-category-form-tab>
     </ng-template>
   </ngb-tab>
-</ngb-tabset>
+</ngb-tabset> -->
