@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material';
 
@@ -8,39 +8,42 @@ import { MatSidenav } from '@angular/material';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('sidenav') sidenav: MatSidenav;
+  year: number = new Date().getFullYear();
+
   constructor(private router: Router) {
   }
 
-  showAudit(sidenav: MatSidenav) {
-    this.changePage('audit', sidenav);
+  showAudit() {
+    this.changePage('audit');
   }
   
-  showCatalog(sidenav: MatSidenav) {
-    this.changePage('catalog', sidenav);
+  showCatalog() {
+    this.changePage('catalog');
   }
 
-  showHome(sidenav: MatSidenav) {
-    this.changePage('', sidenav);
+  showHome() {
+    this.changePage('');
   }
 
-  showInventory(sidenav: MatSidenav) {
-    this.changePage('inventory', sidenav);
+  showInventory() {
+    this.changePage('inventory');
   }
 
-  showPurchaseOrderList(sidenav: MatSidenav) {
-    this.changePage('incoming', sidenav);
+  showPurchaseOrderList() {
+    this.changePage('incoming');
   }
 
-  showSalesOrderList(sidenav: MatSidenav) {
-    this.changePage('sales-orders', sidenav);
+  showSalesOrderList() {
+    this.changePage('sales-orders');
   }
 
-  showUserList(sidenav: MatSidenav) {
-    this.changePage('users', sidenav);
+  showUserList() {
+    this.changePage('users');
   }
 
-  changePage(route: string, sidenav: MatSidenav) {
+  changePage(route: string) {
     this.router.navigate([route]);
-    sidenav.opened = false;
+    this.sidenav.opened = false;
   }
 }

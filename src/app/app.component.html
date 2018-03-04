@@ -20,39 +20,39 @@
             <mat-list>
                 <mat-list-item>
                     <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.InventoryViewer) || User.IsInRole(Role.WarehouseCrew)) { -->
-                    <button mat-menu-item (click)="showInventory(sidenav)">
+                    <button mat-menu-item (click)="showInventory()">
                         <mat-icon>assignment</mat-icon>
                         <span>Inventory</span>
                     </button>
                 </mat-list-item>
                 <mat-list-item>
                     <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.WarehouseCrew)) { -->
-                    <button mat-menu-item (click)="showPurchaseOrderList(sidenav)">
+                    <button mat-menu-item (click)="showPurchaseOrderList()">
                         <mat-icon>trending_flat</mat-icon>
                         <span>Incoming</span>
                     </button>
                 </mat-list-item>
                 <mat-list-item>
-                    <button mat-menu-item (click)="showSalesOrderList(sidenav)">
+                    <button mat-menu-item (click)="showSalesOrderList()">
                         <mat-icon>attach_money</mat-icon>
                         <span>Sales Orders</span>
                     </button>
                 </mat-list-item>
                 <mat-list-item>
                     <!-- @if (User.IsInRole(Role.InventoryMaster)) { -->
-                    <button mat-menu-item (click)="showAudit(sidenav)">
+                    <button mat-menu-item (click)="showAudit()">
                         <mat-icon>assignment_turned_in</mat-icon>
                         <span>Audit</span>
                     </button>
                 </mat-list-item>
                 <mat-list-item>
-                    <button mat-menu-item (click)="showCatalog(sidenav)">
+                    <button mat-menu-item (click)="showCatalog()">
                         <mat-icon>library_books</mat-icon>
                         <span>Catalog</span>
                     </button>
                 </mat-list-item>
                 <mat-list-item>
-                    <button mat-menu-item (click)="showUserList(sidenav)">
+                    <button mat-menu-item (click)="showUserList()">
                         <mat-icon>people</mat-icon>
                         <span>Users</span>
                     </button>
@@ -66,10 +66,12 @@
         </mat-sidenav-content>
     </mat-sidenav-container>
     <mat-toolbar color="primary" class="page-footer">
-        <div class="container">
-            <div class="float-left" style="margin-top: 10px;">
-                &copy; 2018 - Thermory
-            </div>
-        </div>
+        <p>
+            &copy; {{year}} - Thermory
+            <i class="fas fa-cog fa-spin"></i>
+            <i class="fas fa-dolly"></i>
+            <i class="fas fa-truck"></i>
+            <i class="fas fa-ship"></i>
+        </p>
     </mat-toolbar>
 </ng-container>
