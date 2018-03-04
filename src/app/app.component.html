@@ -1,17 +1,75 @@
-<app-page-header></app-page-header>
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-</div> 
-<div id="body" style="margin-bottom: 20px;">
-  <!-- @RenderSection("featured", required: false) -->
-  <section class="content-wrapper clear-fix">
-    <router-outlet></router-outlet>
-  </section>
-</div>
-<!-- <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="float-left" style="margin-top: 10px;">
-            &copy; 2018 - Thermory
+<ng-container>
+    <mat-toolbar color="primary" class="page-header">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>Thermory</span> 
+        <span class="spacer"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu>
+            <button mat-menu-item>
+                <mat-icon>fingerprint</mat-icon>
+                <span>Login</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar>
+    <mat-sidenav-container class="page-container">
+        <mat-sidenav #sidenav class="page-sidenav" fixedInViewport="false" mode="side" opened="false">
+            <mat-list>
+                <mat-list-item>
+                    <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.InventoryViewer) || User.IsInRole(Role.WarehouseCrew)) { -->
+                    <button mat-menu-item (click)="showInventory(sidenav)">
+                        <mat-icon>assignment</mat-icon>
+                        <span>Inventory</span>
+                    </button>
+                </mat-list-item>
+                <mat-list-item>
+                    <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.WarehouseCrew)) { -->
+                    <button mat-menu-item (click)="showPurchaseOrderList(sidenav)">
+                        <mat-icon>trending_flat</mat-icon>
+                        <span>Incoming</span>
+                    </button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-menu-item (click)="showSalesOrderList(sidenav)">
+                        <mat-icon>attach_money</mat-icon>
+                        <span>Sales Orders</span>
+                    </button>
+                </mat-list-item>
+                <mat-list-item>
+                    <!-- @if (User.IsInRole(Role.InventoryMaster)) { -->
+                    <button mat-menu-item (click)="showAudit(sidenav)">
+                        <mat-icon>assignment_turned_in</mat-icon>
+                        <span>Audit</span>
+                    </button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-menu-item (click)="showCatalog(sidenav)">
+                        <mat-icon>library_books</mat-icon>
+                        <span>Catalog</span>
+                    </button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-menu-item (click)="showUserList(sidenav)">
+                        <mat-icon>people</mat-icon>
+                        <span>Users</span>
+                    </button>
+                </mat-list-item>
+            </mat-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <section class="content-wrapper clear-fix">
+                <router-outlet></router-outlet>
+            </section>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    <mat-toolbar color="primary" class="page-footer">
+        <div class="container">
+            <div class="float-left" style="margin-top: 10px;">
+                &copy; 2018 - Thermory
+            </div>
         </div>
-    </div>
-</nav> -->
+    </mat-toolbar>
+</ng-container>
