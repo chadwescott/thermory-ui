@@ -17,47 +17,47 @@
     </mat-toolbar>
     <mat-sidenav-container class="page-container">
         <mat-sidenav #sidenav class="page-sidenav" fixedInViewport="false" mode="side" opened="false">
-            <mat-list>
-                <mat-list-item>
+            <div class="menu-list">
+                <div>
                     <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.InventoryViewer) || User.IsInRole(Role.WarehouseCrew)) { -->
                     <button mat-menu-item (click)="showInventory()">
                         <mat-icon>assignment</mat-icon>
                         <span>Inventory</span>
                     </button>
-                </mat-list-item>
-                <mat-list-item>
+                </div>
+                <div>
                     <!-- @if (User.IsInRole(Role.InventoryMaster) || User.IsInRole(Role.WarehouseCrew)) { -->
                     <button mat-menu-item (click)="showPurchaseOrderList()">
                         <mat-icon>trending_flat</mat-icon>
                         <span>Incoming</span>
                     </button>
-                </mat-list-item>
-                <mat-list-item>
+                </div>
+                <div>
                     <button mat-menu-item (click)="showSalesOrderList()">
                         <mat-icon>attach_money</mat-icon>
                         <span>Sales Orders</span>
                     </button>
-                </mat-list-item>
-                <mat-list-item>
+                </div>
+                <div>
                     <!-- @if (User.IsInRole(Role.InventoryMaster)) { -->
                     <button mat-menu-item (click)="showAudit()">
                         <mat-icon>assignment_turned_in</mat-icon>
                         <span>Audit</span>
                     </button>
-                </mat-list-item>
-                <mat-list-item>
+                </div>
+                <div>
                     <button mat-menu-item (click)="showCatalog()">
                         <mat-icon>library_books</mat-icon>
                         <span>Catalog</span>
                     </button>
-                </mat-list-item>
-                <mat-list-item>
+                </div>
+                <div>
                     <button mat-menu-item (click)="showUserList()">
                         <mat-icon>people</mat-icon>
                         <span>Users</span>
                     </button>
-                </mat-list-item>
-            </mat-list>
+                </div>
+            </div>
         </mat-sidenav>
         <mat-sidenav-content>
             <section class="content-wrapper clear-fix">

@@ -40,6 +40,8 @@
     right: 0;
 }
 
-.mat-list {
-    padding: 0;
+.menu-list {
+    display: flex;
+    flex-flow: column;
+    border-right-style: groove;
 }
