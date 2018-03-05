@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatIconModule, MatListModule, MatMenuModule, MatSidenav, MatToolbarModule, MatSidenavModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatSidenav, MatTabsModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import 'hammerjs';
@@ -50,10 +50,15 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     MatButtonModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatFormFieldModule,
     MatIconModule,
+    MatInputModule,
     MatListModule,
     MatMenuModule,
     MatSidenavModule,
+    MatTabsModule,
     MatToolbarModule,
     RouterModule.forRoot(routes, {useHash: true})
   ],

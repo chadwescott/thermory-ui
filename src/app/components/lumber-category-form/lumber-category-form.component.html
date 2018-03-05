@@ -1,8 +1,20 @@
-<div class="form-group">
-  <label>Name</label>
-  <input type="text" class="form-control" name="name" [(ngModel)]="lumberCategory.name" required />
-</div>
-<div class="form-group">
-  <label>Sort Order</label>
-  <input type="text" class="form-control" sortOrder="sortOrder" [(ngModel)]="lumberCategory.sortOrder" required />
-</div>
+  <mat-card>
+    <mat-card-title>
+      {{title}}{{lumberCategory.name}}:
+    </mat-card-title>
+    <mat-card-content>
+      <form name="lumberCategoryForm">
+        <div class="form-container">
+          <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="lumberCategoryClone.name" name="name" required />
+          </mat-form-field>
+        </div>
+        <div class="form-container">
+          <mat-form-field>
+            <input matInput placeholder="Sort Order" [(ngModel)]="lumberCategoryClone.sortOrder" name="sortOrder" required />
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" (click)="save()">Save</button>
+      </form>
+    </mat-card-content>
+  </mat-card>

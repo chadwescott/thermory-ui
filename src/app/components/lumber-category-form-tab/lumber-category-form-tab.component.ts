@@ -9,21 +9,9 @@ import { LumberCategoryService } from '../../services/lumber-category.service';
 })
 export class LumberCategoryFormTabComponent implements OnInit {
   @Input() lumberCategory: LumberCategory;
-  title: string;
 
   constructor(private lumberCategoryService: LumberCategoryService) { }
 
   ngOnInit() {
-    if (this.lumberCategory == null) {
-      this.lumberCategory = new LumberCategory('', '', this.lumberCategoryService.lumberCategories.length + 1);
-      this.title = 'Add Category';
-    }
-    else {
-      this.title = 'Edit ' + this.lumberCategory.name;
-    }
-
-    function save() {
-
-    }
   }
 }

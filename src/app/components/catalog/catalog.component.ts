@@ -8,7 +8,6 @@ import { LumberSubCategoryService } from '../../services/lumber-sub-category.ser
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-
   constructor(private lumberCategoryService: LumberCategoryService, private lumberSubCategoryService:
     LumberSubCategoryService) { }
 

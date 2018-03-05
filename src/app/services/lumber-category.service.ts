@@ -12,7 +12,16 @@ export class LumberCategoryService {
 
   save(lumberCategory: LumberCategory) {
     if (lumberCategory.id === '') {
+      lumberCategory.id = (this.lumberCategories.length + 1).toString();
       this.lumberCategories.push(lumberCategory);
+    } else {
+      this.updateCategory(lumberCategory);
     }
+  }
+
+  updateCategory(lumberCategory: LumberCategory) {
+    let i = this.lumberCategories.findIndex(c => c.id == lumberCategory.id);
+    if (i >= 0)
+      this.lumberCategories[i] = lumberCategory;
   }
 }
