@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { MatSidenav } from '@angular/material';
 
 @Component({
@@ -10,8 +10,16 @@ import { MatSidenav } from '@angular/material';
 export class AppComponent {
   @ViewChild('sidenav') sidenav: MatSidenav;
   year: number = new Date().getFullYear();
+  title: string;
 
   constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof(ActivationEnd)) {
+        let e = event as ActivationEnd;
+        this.title = e.snapshot.data['title'];
+      }
+      console.log(event);
+    });
   }
 
   showAudit() {

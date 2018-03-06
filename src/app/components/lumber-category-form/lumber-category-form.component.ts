@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormsModule, FormGroup, FormControl } from '@angular/forms';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { LumberCategory } from '../../models/lumber-category';
 import { LumberCategoryService } from '../../services/lumber-category.service';
 
@@ -13,15 +13,20 @@ export class LumberCategoryFormComponent implements OnInit {
   lumberCategoryClone: LumberCategory;
   title: string;
 
-  constructor(private lumberCategoryService: LumberCategoryService) { }
+  constructor(private lumberCategoryService: LumberCategoryService) {
+  }
 
   ngOnInit() {
+    this.initialize();
+  }
+
+  initialize() {
     if (this.lumberCategory == null) {
       this.lumberCategory = new LumberCategory('', '', this.lumberCategoryService.lumberCategories.length + 1);
       this.title = 'Add Category';
     }
     else {
-      this.title = 'Edit Category ';
+      this.title = 'Edit Category ' + this.lumberCategory.name;
     }
     this.lumberCategoryClone = new LumberCategory(this.lumberCategory.id, this.lumberCategory.name, this.lumberCategory.sortOrder);
   }
@@ -30,6 +35,6 @@ export class LumberCategoryFormComponent implements OnInit {
     this.lumberCategoryService.save(this.lumberCategoryClone);
     if (this.lumberCategory.id == '')
       this.lumberCategory = null;
-    this.ngOnInit();
+    this.initialize();
   }
 }

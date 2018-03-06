@@ -21,14 +21,14 @@ import { LumberCategoryFormTabComponent } from './components/lumber-category-for
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 const routes: Routes = [
-  { path: '', component: CatalogComponent },
-  { path: 'audit', component: InventoryAuditComponent },
-  { path: 'catalog', component: CatalogComponent },
-  { path: 'incoming', component: PurchaseOrderListComponent },
-  { path: 'inventory', component: InventoryComponent },
-  { path: 'sales-orders', component: SalesOrderListComponent },
-  { path: 'users', component: UserListComponent },
-  { path: '**', component: CatalogComponent }
+  { path: '', component: CatalogComponent, data: {title: 'Product Catalog'} },
+  { path: 'audit', component: InventoryAuditComponent, data: {title: 'Audit Inventory'} },
+  { path: 'catalog', component: CatalogComponent, data: {title: 'Product Catalog'} },
+  { path: 'incoming', component: PurchaseOrderListComponent, data: {title: 'Incoming Orders'} },
+  { path: 'inventory', component: InventoryComponent, data: {title: 'Inventory'} },
+  { path: 'sales-orders', component: SalesOrderListComponent, data: {title: 'Sales Orders'} },
+  { path: 'users', component: UserListComponent, data: {title: 'Users'} },
+  { path: '**', component: CatalogComponent, data: {title: 'Product Catalog'} }
 ];
 
 @NgModule({
@@ -62,7 +62,10 @@ const routes: Routes = [
     MatToolbarModule,
     RouterModule.forRoot(routes, {useHash: true})
   ],
-  providers: [LumberCategoryService, LumberSubCategoryService],
+  providers: [
+    LumberCategoryService,
+    LumberSubCategoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
