@@ -19,6 +19,7 @@ import { LumberCategoryFormComponent } from './components/lumber-category-form/l
 import { LumberSubCategoryListComponent } from './components/lumber-sub-category-list/lumber-sub-category-list.component';
 import { LumberCategoryFormTabComponent } from './components/lumber-category-form-tab/lumber-category-form-tab.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { RouterService } from './services/router.service';
 
 const routes: Routes = [
   { path: '', component: CatalogComponent, data: {title: 'Product Catalog'} },
@@ -64,7 +65,8 @@ const routes: Routes = [
   ],
   providers: [
     LumberCategoryService,
-    LumberSubCategoryService
+    LumberSubCategoryService,
+    RouterService
   ],
   bootstrap: [AppComponent]
 })
