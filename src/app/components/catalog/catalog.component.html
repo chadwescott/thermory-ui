@@ -1,11 +1,12 @@
-<mat-tab-group>
-  <mat-tab *ngFor="let c of lumberCategoryService.lumberCategories" [label]="c.name">
-      <app-lumber-category-form-tab [lumberCategory]="c"></app-lumber-category-form-tab>
-  </mat-tab>
-  <mat-tab>
-    <ng-template mat-tab-label>
+<div class="menu-list">
+  <div *ngFor="let c of lumberCategoryService.lumberCategories">
+    <button mat-menu-item (click)="routerService.showCatalogLumberCategory(c.id)">
+      {{ c.name }}
+    </button>
+  </div>
+  <div>
+    <button mat-menu-item (click)="routerService.showCatalogLumberCategory()">
       <i class="fas fa-plus"></i> Add
-    </ng-template>
-    <app-lumber-category-form-tab></app-lumber-category-form-tab>
-  </mat-tab>
-</mat-tab-group>
+    </button>
+  </div>
+</div>

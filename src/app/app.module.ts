@@ -17,7 +17,6 @@ import { LumberCategoryService } from './services/lumber-category.service';
 import { LumberSubCategoryService } from './services/lumber-sub-category.service';
 import { LumberCategoryFormComponent } from './components/lumber-category-form/lumber-category-form.component';
 import { LumberSubCategoryListComponent } from './components/lumber-sub-category-list/lumber-sub-category-list.component';
-import { LumberCategoryFormTabComponent } from './components/lumber-category-form-tab/lumber-category-form-tab.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { RouterService } from './services/router.service';
 
@@ -25,6 +24,8 @@ const routes: Routes = [
   { path: '', component: CatalogComponent, data: {title: 'Product Catalog'} },
   { path: 'audit', component: InventoryAuditComponent, data: {title: 'Audit Inventory'} },
   { path: 'catalog', component: CatalogComponent, data: {title: 'Product Catalog'} },
+  { path: 'catalog/lumber-category', component: LumberCategoryFormComponent, data: {title: 'Product LumberCategoryForm'} },
+  { path: 'catalog/lumber-category/:lumberCategoryId', component: LumberCategoryFormComponent, data: {title: 'Product LumberCategoryForm'} },
   { path: 'incoming', component: PurchaseOrderListComponent, data: {title: 'Incoming Orders'} },
   { path: 'inventory', component: InventoryComponent, data: {title: 'Inventory'} },
   { path: 'sales-orders', component: SalesOrderListComponent, data: {title: 'Sales Orders'} },
@@ -43,7 +44,6 @@ const routes: Routes = [
     UserListComponent,
     LumberCategoryFormComponent,
     LumberSubCategoryListComponent,
-    LumberCategoryFormTabComponent,
     PageHeaderComponent
   ],
   imports: [

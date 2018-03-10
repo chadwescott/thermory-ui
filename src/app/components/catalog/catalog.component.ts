@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LumberCategoryService } from '../../services/lumber-category.service';
-import { LumberSubCategoryService } from '../../services/lumber-sub-category.service';
+import { LumberCategory } from '../../models/lumber-category';
+import { RouterService } from '../../services/router.service';
 
 @Component({
   selector: 'app-catalog',
@@ -8,8 +9,10 @@ import { LumberSubCategoryService } from '../../services/lumber-sub-category.ser
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-  constructor(private lumberCategoryService: LumberCategoryService, private lumberSubCategoryService:
-    LumberSubCategoryService) { }
+  lumberCategory: LumberCategory;
+
+  constructor(private lumberCategoryService: LumberCategoryService, private routerService: RouterService) {
+  }
 
   ngOnInit() {
   }

@@ -24,6 +24,13 @@ export class RouterService {
     this.changePage('catalog');
   }
 
+  showCatalogLumberCategory(id: string) {
+    let route = 'catalog/lumber-category';
+    if (id != null)
+      route += '/' + id;
+    this.changePage(route);
+  }
+
   showHome() {
     this.changePage('');
   }
