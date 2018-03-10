@@ -1,12 +1,12 @@
 <div class="menu-list">
-  <div *ngFor="let c of lumberCategoryService.lumberCategories">
-    <button mat-menu-item (click)="routerService.showCatalogLumberCategory(c.id)">
-      {{ c.name }}
-    </button>
-  </div>
   <div>
     <button mat-menu-item (click)="routerService.showCatalogLumberCategory()">
       <i class="fas fa-plus"></i> Add
+    </button>
+  </div>
+  <div *ngFor="let c of lumberCategoryService.lumberCategories">
+    <button mat-menu-item (click)="routerService.showCatalogLumberCategory(c.id)">
+      {{ c.name }}
     </button>
   </div>
 </div>

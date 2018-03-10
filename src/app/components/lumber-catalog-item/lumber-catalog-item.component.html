@@ -1,4 +1,23 @@
-<button mat-menu-item (click)="routerService.showCatalog()">
-  <i class="fas fa-arrow-left"></i> Back
-</button>
-<app-lumber-category-form [(lumberCategory)]="lumberCategory"></app-lumber-category-form>
+<mat-toolbar>
+  <span>{{title}}</span>
+  <span [hidden]="lumberCategoryService.lumberCategory.id == null">
+    <button mat-menu-item (click)="routerService.showEditLumberCategory(lumberCategoryService.lumberCategory.id)">
+      <i class="fas fa-edit"></i> Edit
+    </button>
+  </span>
+  <span [hidden]="lumberCategoryService.lumberCategory.id == null">
+    <button mat-menu-item (click)="routerService.showCatalog()">
+      <i class="fas fa-list"></i> Sub Categories
+    </button>
+  </span>
+  <span>
+    <button mat-menu-item (click)="routerService.showCatalog()">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+  </span>
+</mat-toolbar>
+<mat-card>
+  <mat-card-content>
+    <router-outlet></router-outlet>
+  </mat-card-content>
+</mat-card>

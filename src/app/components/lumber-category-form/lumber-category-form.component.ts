@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { LumberCategory } from '../../models/lumber-category';
 import { LumberCategoryService } from '../../services/lumber-category.service';
+import { RouterService } from '../../services/router.service';
 
 @Component({
   selector: 'app-lumber-category-form',
@@ -9,12 +10,10 @@ import { LumberCategoryService } from '../../services/lumber-category.service';
   styleUrls: ['./lumber-category-form.component.scss']
 })
 export class LumberCategoryFormComponent implements OnInit {
-  @Input() lumberCategory: LumberCategory;
   sortOrderOptions: number[] = [];
   lumberCategoryClone: LumberCategory;
-  title: string;
 
-  constructor(private lumberCategoryService: LumberCategoryService) {
+  constructor(private lumberCategoryService: LumberCategoryService, private routerService: RouterService) {
   }
 
   ngOnInit() {
@@ -26,20 +25,15 @@ export class LumberCategoryFormComponent implements OnInit {
       this.sortOrderOptions.push(i);
     }
 
-    if (this.lumberCategory == null) {
-      this.title = 'Add Category';
-      this.lumberCategory = new LumberCategory(null, null, this.lumberCategoryService.lumberCategories.length + 1);
-      this.sortOrderOptions.push(this.lumberCategory.sortOrder);
+    if (this.lumberCategoryService.lumberCategory.id == null) {
+      this.sortOrderOptions.push(this.lumberCategoryService.lumberCategory.sortOrder);
     }
-    else {
-      this.title = 'Edit Category ' + this.lumberCategory.name;
-    }
-    this.lumberCategoryClone = new LumberCategory(this.lumberCategory.id, this.lumberCategory.name, this.lumberCategory.sortOrder);
+    this.lumberCategoryClone = new LumberCategory(this.lumberCategoryService.lumberCategory.id, this.lumberCategoryService.lumberCategory.name, this.lumberCategoryService.lumberCategory.sortOrder);
   }
 
   save() {
     this.lumberCategoryService.save(this.lumberCategoryClone);
-    this.lumberCategory = this.lumberCategoryClone;
-    this.initialize();
+    this.lumberCategoryService.lumberCategory = this.lumberCategoryClone;
+    this.routerService.showEditLumberCategory(this.lumberCategoryService.lumberCategory.id);
   }
 }

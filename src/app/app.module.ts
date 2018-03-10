@@ -22,11 +22,27 @@ import { RouterService } from './services/router.service';
 import { LumberCatalogItemComponent } from './components/lumber-catalog-item/lumber-catalog-item.component';
 
 const routes: Routes = [
-  { path: '', component: CatalogMenuComponent, data: {title: 'Product Catalog'} },
+  { path: '', redirectTo: 'catalog', pathMatch: 'full' },
   { path: 'audit', component: InventoryAuditComponent, data: {title: 'Audit Inventory'} },
   { path: 'catalog', component: CatalogMenuComponent, data: {title: 'Product Catalog'} },
-  { path: 'catalog/lumber-category', component: LumberCatalogItemComponent, data: {title: 'Product Catalog'} },
-  { path: 'catalog/lumber-category/:lumberCategoryId', component: LumberCatalogItemComponent, data: {title: 'Product Catalog'} },
+  {
+    path: 'catalog/lumber-category',
+    component: LumberCatalogItemComponent,
+    data: {title: 'Product Catalog'},
+    children: [
+      { path: '', redirectTo: 'add', pathMatch: 'full' },
+      { path: 'add', component: LumberCategoryFormComponent },
+    ],
+  },
+  { 
+    path: 'catalog/lumber-category/:lumberCategoryId',
+    component: LumberCatalogItemComponent,
+    children: [
+      { path: '', redirectTo: 'edit', pathMatch: 'full' },
+      { path: 'edit', component: LumberCategoryFormComponent }
+    ],
+    data: {title: 'Product Catalog'}
+  },
   { path: 'incoming', component: PurchaseOrderListComponent, data: {title: 'Incoming Orders'} },
   { path: 'inventory', component: InventoryComponent, data: {title: 'Inventory'} },
   { path: 'sales-orders', component: SalesOrderListComponent, data: {title: 'Sales Orders'} },

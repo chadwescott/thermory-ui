@@ -10,16 +10,23 @@ import { LumberCategoryService } from '../../services/lumber-category.service';
   styleUrls: ['./lumber-catalog-item.component.scss']
 })
 export class LumberCatalogItemComponent implements OnInit {
-  lumberCategory: LumberCategory;
+  title: string;
 
   constructor(private lumberCategoryService: LumberCategoryService, private route: ActivatedRoute, private routerService: RouterService) {
       this.route.params.subscribe(params => this.lumberCategoryChanged(params.lumberCategoryId));
-  }
-
-  lumberCategoryChanged(id: string) {
-    this.lumberCategory = this.lumberCategoryService.get(id);
+      this.lumberCategoryService.categorySaved.subscribe(() => this.lumberCategoryChanged(this.lumberCategoryService.lumberCategory.id));
   }
 
   ngOnInit() {
+  }
+
+  private lumberCategoryChanged(id: string) {
+    this.lumberCategoryService.load(id);
+    if (this.lumberCategoryService.lumberCategory == null) {
+      if (id != null)
+        this.routerService.showCatalogLumberCategory(null);
+      this.lumberCategoryService.lumberCategory = new LumberCategory(null, null, this.lumberCategoryService.lumberCategories.length + 1);
+    }
+    this.title = this.lumberCategoryService.lumberCategory.id == null ? 'New Category' : this.lumberCategoryService.lumberCategory.name;
   }
 }

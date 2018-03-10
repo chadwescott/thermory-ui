@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { LumberCategory } from '../models/lumber-category';
 
 @Injectable()
 export class LumberCategoryService {
+  @Output() categorySaved = new EventEmitter();
+
   lumberCategories: LumberCategory[] = [
     new LumberCategory('1', '6" Ash Decking', 1),
     new LumberCategory('2', '4" Ash Decking', 2),
@@ -26,14 +28,13 @@ export class LumberCategoryService {
     new LumberCategory('20', 'Drift Pine Decking', 20),
     new LumberCategory('21', 'Drift Spruce Cladding', 21)
   ];
+  lumberCategory: LumberCategory;
 
   constructor() { }
 
-  get(id: string) {
-    if (id == null)
-      return null;
+  load(id: string) {
     let i = this.lumberCategories.findIndex(c => c.id == id);
-    return i >= 0 ? this.lumberCategories[i] : null;
+    this.lumberCategory = i >= 0 ? this.lumberCategories[i] : null;
   }
 
   save(lumberCategory: LumberCategory) {
@@ -43,6 +44,8 @@ export class LumberCategoryService {
     } else {
       this.updateCategory(lumberCategory);
     }
+    this.lumberCategory = lumberCategory;
+    this.categorySaved.emit();
   }
 
   updateCategory(lumberCategory: LumberCategory) {

@@ -25,9 +25,24 @@ export class RouterService {
   }
 
   showCatalogLumberCategory(id: string) {
+    let suffix: string;
+    if (id == null)
+      suffix = 'add';
+    let route = this.getLumberCateogryBaseRoute(id, suffix);
+    this.changePage(route);
+  }
+
+  private getLumberCateogryBaseRoute(id: string, suffix: string) {
     let route = 'catalog/lumber-category';
     if (id != null)
       route += '/' + id;
+    if (suffix != null)
+      route += '/' + suffix;
+    return route;
+  }
+
+  showEditLumberCategory(id: string) {
+    let route = this.getLumberCateogryBaseRoute(id, 'edit');
     this.changePage(route);
   }
 
@@ -53,6 +68,6 @@ export class RouterService {
 
   private changePage(route: string) {
     this.router.navigate([route]);
-    this.pageChanged.emit
+    this.pageChanged.emit();
   }
 }

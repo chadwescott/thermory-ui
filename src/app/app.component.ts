@@ -14,6 +14,10 @@ export class AppComponent {
   title: string;
 
   constructor(private routerService: RouterService) {
-    this.routerService.pageChanged.subscribe(() => this.sidenav.opened = false);
+    this.routerService.pageChanged.subscribe(() => this.pageChanged());
+  }
+
+  private pageChanged() {
+    this.sidenav.opened = false;
   }
 }
