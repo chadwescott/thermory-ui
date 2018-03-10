@@ -5,12 +5,14 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu>
-        <button mat-menu-item (click)="routerService.showEditLumberCategory(lumberCategoryService.lumberCategory.id)">
-          <i class="fas fa-edit"></i> Edit
-        </button>
-        <button mat-menu-item (click)="routerService.showCatalog()">
-          <i class="fas fa-list"></i> Sub Categories
-        </button>
+        <span [hidden]="lumberCategoryService.lumberCategory.id == null">
+          <button mat-menu-item (click)="routerService.showEditLumberCategory(lumberCategoryService.lumberCategory.id)">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+          <button mat-menu-item (click)="routerService.showCatalog()">
+            <i class="fas fa-list"></i> Sub Categories
+          </button>
+        </span>
         <button mat-menu-item (click)="routerService.showCatalog()">
           <i class="fas fa-arrow-left"></i> Back
         </button>
