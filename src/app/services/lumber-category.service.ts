@@ -33,7 +33,7 @@ export class LumberCategoryService {
     if (id == null)
       return null;
     let i = this.lumberCategories.findIndex(c => c.id == id);
-    return i >= 0 ? this.lumberCategories[i] : new LumberCategory(null, "", this.lumberCategories.length);
+    return i >= 0 ? this.lumberCategories[i] : null;
   }
 
   save(lumberCategory: LumberCategory) {

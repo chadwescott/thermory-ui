@@ -1,13 +1,13 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatSidenav, MatTabsModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatSelectModule, MatSidenavModule, MatTabsModule, MatToolbarModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
-import { CatalogComponent } from './components/catalog/catalog.component';
+import { CatalogMenuComponent } from './components/catalog-menu/catalog-menu.component';
 import { SalesOrderListComponent } from './components/sales-order-list/sales-order-list.component';
 import { PurchaseOrderListComponent } from './components/purchase-order-list/purchase-order-list.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
@@ -19,24 +19,25 @@ import { LumberCategoryFormComponent } from './components/lumber-category-form/l
 import { LumberSubCategoryListComponent } from './components/lumber-sub-category-list/lumber-sub-category-list.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { RouterService } from './services/router.service';
+import { LumberCatalogItemComponent } from './components/lumber-catalog-item/lumber-catalog-item.component';
 
 const routes: Routes = [
-  { path: '', component: CatalogComponent, data: {title: 'Product Catalog'} },
+  { path: '', component: CatalogMenuComponent, data: {title: 'Product Catalog'} },
   { path: 'audit', component: InventoryAuditComponent, data: {title: 'Audit Inventory'} },
-  { path: 'catalog', component: CatalogComponent, data: {title: 'Product Catalog'} },
-  { path: 'catalog/lumber-category', component: LumberCategoryFormComponent, data: {title: 'Product LumberCategoryForm'} },
-  { path: 'catalog/lumber-category/:lumberCategoryId', component: LumberCategoryFormComponent, data: {title: 'Product LumberCategoryForm'} },
+  { path: 'catalog', component: CatalogMenuComponent, data: {title: 'Product Catalog'} },
+  { path: 'catalog/lumber-category', component: LumberCatalogItemComponent, data: {title: 'Product Catalog'} },
+  { path: 'catalog/lumber-category/:lumberCategoryId', component: LumberCatalogItemComponent, data: {title: 'Product Catalog'} },
   { path: 'incoming', component: PurchaseOrderListComponent, data: {title: 'Incoming Orders'} },
   { path: 'inventory', component: InventoryComponent, data: {title: 'Inventory'} },
   { path: 'sales-orders', component: SalesOrderListComponent, data: {title: 'Sales Orders'} },
   { path: 'users', component: UserListComponent, data: {title: 'Users'} },
-  { path: '**', component: CatalogComponent, data: {title: 'Product Catalog'} }
+  { path: '**', component: CatalogMenuComponent, data: {title: 'Product Catalog'} }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    CatalogComponent,
+    CatalogMenuComponent,
     SalesOrderListComponent,
     PurchaseOrderListComponent,
     InventoryComponent,
@@ -44,7 +45,8 @@ const routes: Routes = [
     UserListComponent,
     LumberCategoryFormComponent,
     LumberSubCategoryListComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    LumberCatalogItemComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -58,6 +60,7 @@ const routes: Routes = [
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatSelectModule,
     MatSidenavModule,
     MatTabsModule,
     MatToolbarModule,
