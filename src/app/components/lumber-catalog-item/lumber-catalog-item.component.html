@@ -1,22 +1,23 @@
-<mat-toolbar>
-  <span>{{title}}</span>
-  <span [hidden]="lumberCategoryService.lumberCategory.id == null">
-    <button mat-menu-item (click)="routerService.showEditLumberCategory(lumberCategoryService.lumberCategory.id)">
-      <i class="fas fa-edit"></i> Edit
-    </button>
-  </span>
-  <span [hidden]="lumberCategoryService.lumberCategory.id == null">
-    <button mat-menu-item (click)="routerService.showCatalog()">
-      <i class="fas fa-list"></i> Sub Categories
-    </button>
-  </span>
-  <span>
-    <button mat-menu-item (click)="routerService.showCatalog()">
-      <i class="fas fa-arrow-left"></i> Back
-    </button>
-  </span>
-</mat-toolbar>
 <mat-card>
+  <mat-card-title>
+    <div class="menu-list">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu>
+        <button mat-menu-item (click)="routerService.showEditLumberCategory(lumberCategoryService.lumberCategory.id)">
+          <i class="fas fa-edit"></i> Edit
+        </button>
+        <button mat-menu-item (click)="routerService.showCatalog()">
+          <i class="fas fa-list"></i> Sub Categories
+        </button>
+        <button mat-menu-item (click)="routerService.showCatalog()">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </mat-menu>
+      <span>{{title}}</span>
+    </div>
+  </mat-card-title>
   <mat-card-content>
     <router-outlet></router-outlet>
   </mat-card-content>
