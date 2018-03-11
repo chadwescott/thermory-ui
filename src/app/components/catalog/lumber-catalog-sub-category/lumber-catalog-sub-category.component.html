@@ -1,12 +1,35 @@
-<div class="menu-list">
-  <div>
-    <button mat-menu-item (click)="routerService.showCatalogLumberSubCategory(lumberSubCategoryService.lumberCategory.id)">
-      <i class="fas fa-plus"></i> Add
-    </button>
-  </div>
-  <div *ngFor="let c of lumberSubCategoryService.lumberSubCategories">
-    <button mat-menu-item (click)="routerService.showCatalogLumberSubCategory(c.lumberCategoryId, c.id)">
-      {{ c.name }}
-    </button>
-  </div>
-</div>
+<mat-card>
+  <mat-card-title>
+    <div class="menu-list">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu>
+        <span [hidden]="lumberSubCategoryService.lumberSubCategory.id == null">
+          <button mat-menu-item (click)="routerService.showEditLumberSubCategory(lumberSubCategoryService.lumberCategory.id, lumberSubCategoryService.lumberSubCategory.id)">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+          <button mat-menu-item [matMenuTriggerFor]="typeMenu">
+            <i class="fas fa-list"></i> Types
+          </button>
+        </span>
+        <mat-menu #typeMenu>
+          <!-- <div>
+            <button mat-menu-item (click)="routerService.showCatalogLumberSubSubCategory(lumberSubSubCategoryService.lumberSubCategory.id)">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+          <div *ngFor="let c of lumberSubSubCategoryService.lumberSubCategories">
+            <button mat-menu-item (click)="routerService.showCatalogLumberSubSubCategory(c.lumberSubCategoryId, c.id)">
+              {{ c.name }}
+            </button>
+          </div> -->
+        </mat-menu>
+      </mat-menu>
+      <span>{{title}}</span>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <router-outlet></router-outlet>
+  </mat-card-content>
+</mat-card>

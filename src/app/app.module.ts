@@ -20,6 +20,7 @@ import { LumberCatalogSubCategoryComponent } from './components/catalog/lumber-c
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { RouterService } from './services/router.service';
 import { LumberCatalogCategoryComponent } from './components/catalog/lumber-catalog-category/lumber-catalog-category.component';
+import { LumberSubCategoryFormComponent } from './components/catalog/lumber-sub-category-form/lumber-sub-category-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'catalog', pathMatch: 'full' },
@@ -42,7 +43,14 @@ const routes: Routes = [
       { path: 'edit', component: LumberCategoryFormComponent },
       { path: 'sub-categories', redirectTo: 'sub-categories/add', pathMatch: 'full' },
       { path: 'sub-categories/add', component: LumberCatalogSubCategoryComponent },
-      { path: 'sub-categories/:lumberSubCategoryId', component: LumberCatalogSubCategoryComponent }
+      {
+        path: 'sub-categories/:lumberSubCategoryId',
+        component: LumberCatalogSubCategoryComponent,
+        children: [
+          { path: '', redirectTo: 'edit', pathMatch: 'full' },
+          { path: 'edit', component: LumberSubCategoryFormComponent }
+        ]
+      }
     ],
     data: {title: 'Product Catalog'}
   },
@@ -65,7 +73,8 @@ const routes: Routes = [
     LumberCategoryFormComponent,
     LumberCatalogSubCategoryComponent,
     PageHeaderComponent,
-    LumberCatalogCategoryComponent
+    LumberCatalogCategoryComponent,
+    LumberSubCategoryFormComponent
   ],
   imports: [
     BrowserAnimationsModule,

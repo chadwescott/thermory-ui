@@ -1,17 +1,19 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { LumberSubCategory } from '../models/lumber-sub-category';
 import { LumberCategory } from '../models/lumber-category';
 import { LumberCategoryService } from './lumber-category.service';
 
 @Injectable()
 export class LumberSubCategoryService {
+  @Output() lumberSubCategoryLoaded = new EventEmitter<LumberSubCategory>();
+  @Output() lumberSubCategorySaved = new EventEmitter<LumberSubCategory>();
   lumberSubCategories: LumberSubCategory[];
   lumberCategory: LumberCategory;
   lumberSubCategory: LumberSubCategory;
 
   constructor(private lumberCategoryService: LumberCategoryService) {
     this.lumberCategoryService.categoryLoaded.subscribe(lumberCategory => this.loadSubCategoriesByCategory(lumberCategory));
-   }
+  }
 
   private loadSubCategoriesByCategory(lumberCategory: LumberCategory) {
     this.lumberCategory = lumberCategory;
@@ -26,6 +28,10 @@ export class LumberSubCategoryService {
   load(id: string) {
     let i = this.lumberSubCategories.findIndex(c => c.id == id);
     this.lumberSubCategory = i >= 0 ? this.lumberSubCategories[i] : null;
-    // this.subCategoryLoaded.emit(this.lumberSubCategory);
+    this.lumberSubCategoryLoaded.emit(this.lumberSubCategory);
+  }
+
+  save(lumberSubCategory: LumberSubCategory) {
+
   }
 }

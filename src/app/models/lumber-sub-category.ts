@@ -18,4 +18,8 @@ export class LumberSubCategory {
         this.weight = weight;
         this.sortOrder = sortOrder;
     }
+
+    clone() {
+        return new LumberSubCategory(this.id, this.lumberCategoryId, this.name, this.width, this.thickness, this.bundleSize, this.weight, this.sortOrder);
+    }
 }

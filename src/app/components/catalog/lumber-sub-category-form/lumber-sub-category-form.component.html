@@ -1,0 +1,35 @@
+<form name="lumberSubCategoryForm" #myForm="ngForm" (ngSubmit)="save()">
+  <div class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="lumberSubCategoryClone.name" name="name" required />
+    </mat-form-field>
+  </div>
+  <div class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Width mm" [(ngModel)]="lumberSubCategoryClone.width" name="width" required />
+    </mat-form-field>
+  </div>
+  <div class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Thickness mm" [(ngModel)]="lumberSubCategoryClone.thickness" name="thickness" required />
+    </mat-form-field>
+  </div>
+  <div class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Bundle Size" [(ngModel)]="lumberSubCategoryClone.bundleSize" name="bundleSize" required />
+    </mat-form-field>
+  </div>
+  <div class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Weight (lbs/LF)" [(ngModel)]="lumberSubCategoryClone.weight" name="weight" required />
+    </mat-form-field>
+  </div>
+  <div class="form-container">
+    <mat-form-field>
+      <mat-select placeholder="Sort Order" [(ngModel)]="lumberSubCategoryClone.sortOrder" name="sortOrder">
+        <mat-option *ngFor="let o of sortOrderOptions" [value]="o">{{o}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <button type="submit" mat-raised-button color="accent">Save</button>
+</form>

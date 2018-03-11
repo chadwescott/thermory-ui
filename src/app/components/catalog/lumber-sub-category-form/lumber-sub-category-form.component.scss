@@ -1,0 +1,11 @@
+$padding: 20px;
+
+form {
+    padding-left: $padding;
+    padding-right: $padding;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}

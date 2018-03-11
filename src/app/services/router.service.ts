@@ -50,6 +50,11 @@ export class RouterService {
     this.changePage(route);
   }
 
+  showEditLumberSubCategory(categoryId: string, subCategoryId: string) {
+    let route = 'catalog/lumber-categories/' + categoryId + '/sub-categories/' + subCategoryId + '/edit';
+    this.changePage(route);
+  }
+
   showCatalogLumberSubCategory(categoryId: string, subCategoryId: string) {
     this.changePage('catalog/lumber-categories/' + categoryId + '/sub-categories/' + subCategoryId);
   }
