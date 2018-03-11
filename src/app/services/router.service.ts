@@ -37,7 +37,7 @@ export class RouterService {
   }
 
   private getLumberCateogryBaseRoute(id: string, suffix: string) {
-    let route = 'catalog/lumber-category';
+    let route = 'catalog/lumber-categories';
     if (id != null)
       route += '/' + id;
     if (suffix != null)
@@ -50,12 +50,8 @@ export class RouterService {
     this.changePage(route);
   }
 
-  showLumberSubCategoryCatalog(id: string) {
-    this.changePage('catalog/lumber-category/' + id + '/sub-categories');
-  }
-
   showCatalogLumberSubCategory(categoryId: string, subCategoryId: string) {
-    this.changePage('catalog/lumber-category/' + categoryId + '/sub-categories/' + subCategoryId);
+    this.changePage('catalog/lumber-categories/' + categoryId + '/sub-categories/' + subCategoryId);
   }
 
   showInventory() {

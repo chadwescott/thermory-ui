@@ -29,8 +29,6 @@ export class LumberCatalogCategoryComponent implements OnInit {
         this.routerService.showCatalogLumberCategory(null);
       }
       this.lumberCategoryService.lumberCategory = new LumberCategory(null, null, this.lumberCategoryService.lumberCategories.length + 1);
-    } else {
-      this.lumberSubCategoryService.loadSubCategoriesByCategoryId(id);
     }
     this.title = this.lumberCategoryService.lumberCategory.id == null ? 'New Category' : this.lumberCategoryService.lumberCategory.name;
   }

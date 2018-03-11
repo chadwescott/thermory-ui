@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LumberSubCategoryService } from '../../../services/lumber-sub-category.service';
 import { ActivatedRoute } from '@angular/router';
+import { RouterService } from '../../../services/router.service';
+import { LumberCategoryService } from '../../../services/lumber-category.service';
 
 @Component({
   selector: 'app-lumber-catalog-sub-category',
@@ -9,14 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LumberCatalogSubCategoryComponent implements OnInit {
 
-  constructor(private lumberSubCategoryService: LumberSubCategoryService, private route: ActivatedRoute) {
-      this.route.params.subscribe(params => this.lumberCategoryChanged(params.lumberCategoryId));
-   }
-
-  ngOnInit() {
+  constructor(private lumberSubCategoryService: LumberSubCategoryService, private routerService: RouterService) {
   }
 
-  private lumberCategoryChanged(id: string) {
-    this.lumberSubCategoryService.loadSubCategoriesByCategoryId(id);
+  ngOnInit() {
   }
 }

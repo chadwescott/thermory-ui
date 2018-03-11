@@ -9,7 +9,7 @@
           <button mat-menu-item (click)="routerService.showEditLumberCategory(lumberCategoryService.lumberCategory.id)">
             <i class="fas fa-edit"></i> Edit
           </button>
-          <button mat-menu-item [matMenuTriggerFor]="subCategoryMenu"><!-- (click)="routerService.showLumberSubCategoryCatalog(lumberCategoryService.lumberCategory.id)"> -->
+          <button mat-menu-item [matMenuTriggerFor]="subCategoryMenu">
             <i class="fas fa-list"></i> Sub Categories
           </button>
         </span>
@@ -17,6 +17,11 @@
           <i class="fas fa-arrow-left"></i> Back
         </button>
         <mat-menu #subCategoryMenu>
+          <div>
+            <button mat-menu-item (click)="routerService.showCatalogLumberSubCategory(lumberSubCategoryService.lumberCategory.id)">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
           <div *ngFor="let c of lumberSubCategoryService.lumberSubCategories">
             <button mat-menu-item (click)="routerService.showCatalogLumberSubCategory(c.lumberCategoryId, c.id)">
               {{ c.name }}

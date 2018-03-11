@@ -1,9 +1,9 @@
 <div class="menu-list">
-  <!-- <div>
-    <button mat-menu-item (click)="routerService.showCatalogLumberCategory()">
+  <div>
+    <button mat-menu-item (click)="routerService.showCatalogLumberSubCategory(lumberSubCategoryService.lumberCategory.id)">
       <i class="fas fa-plus"></i> Add
     </button>
-  </div> -->
+  </div>
   <div *ngFor="let c of lumberSubCategoryService.lumberSubCategories">
     <button mat-menu-item (click)="routerService.showCatalogLumberSubCategory(c.lumberCategoryId, c.id)">
       {{ c.name }}

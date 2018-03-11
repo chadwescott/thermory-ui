@@ -3,6 +3,7 @@ import { LumberCategory } from '../models/lumber-category';
 
 @Injectable()
 export class LumberCategoryService {
+  @Output() categoryLoaded = new EventEmitter<LumberCategory>();
   @Output() categorySaved = new EventEmitter();
 
   lumberCategories: LumberCategory[] = [
@@ -35,6 +36,7 @@ export class LumberCategoryService {
   load(id: string) {
     let i = this.lumberCategories.findIndex(c => c.id == id);
     this.lumberCategory = i >= 0 ? this.lumberCategories[i] : null;
+    this.categoryLoaded.emit(this.lumberCategory);
   }
 
   save(lumberCategory: LumberCategory) {

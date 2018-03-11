@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'audit', component: InventoryAuditComponent, data: {title: 'Audit Inventory'} },
   { path: 'catalog', component: CatalogMenuComponent, data: {title: 'Product Catalog'} },
   {
-    path: 'catalog/lumber-category',
+    path: 'catalog/lumber-categories',
     component: LumberCatalogCategoryComponent,
     data: {title: 'Product Catalog'},
     children: [
@@ -35,12 +35,14 @@ const routes: Routes = [
     ],
   },
   { 
-    path: 'catalog/lumber-category/:lumberCategoryId',
+    path: 'catalog/lumber-categories/:lumberCategoryId',
     component: LumberCatalogCategoryComponent,
     children: [
       { path: '', redirectTo: 'edit', pathMatch: 'full' },
       { path: 'edit', component: LumberCategoryFormComponent },
-      { path: 'sub-categories', component: LumberCatalogSubCategoryComponent }
+      { path: 'sub-categories', redirectTo: 'sub-categories/add', pathMatch: 'full' },
+      { path: 'sub-categories/add', component: LumberCatalogSubCategoryComponent },
+      { path: 'sub-categories/:lumberSubCategoryId', component: LumberCatalogSubCategoryComponent }
     ],
     data: {title: 'Product Catalog'}
   },
