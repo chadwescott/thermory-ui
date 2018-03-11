@@ -16,6 +16,10 @@ export class RouterService {
     });
   }
 
+  showHome() {
+    this.changePage('');
+  }
+
   showAudit() {
     this.changePage('audit');
   }
@@ -46,14 +50,18 @@ export class RouterService {
     this.changePage(route);
   }
 
-  showHome() {
-    this.changePage('');
+  showLumberSubCategoryCatalog(id: string) {
+    this.changePage('catalog/lumber-category/' + id + '/sub-categories');
+  }
+
+  showCatalogLumberSubCategory(categoryId: string, subCategoryId: string) {
+    this.changePage('catalog/lumber-category/' + categoryId + '/sub-categories/' + subCategoryId);
   }
 
   showInventory() {
     this.changePage('inventory');
   }
-
+  kkk
   showPurchaseOrderList() {
     this.changePage('incoming');
   }

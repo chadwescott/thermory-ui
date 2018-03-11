@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
-import { LumberCategory } from '../../models/lumber-category';
-import { LumberCategoryService } from '../../services/lumber-category.service';
-import { RouterService } from '../../services/router.service';
+import { LumberCategory } from '../../../models/lumber-category';
+import { LumberCategoryService } from '../../../services/lumber-category.service';
+import { RouterService } from '../../../services/router.service';
 
 @Component({
   selector: 'app-lumber-category-form',

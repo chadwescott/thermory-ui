@@ -7,7 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
-import { CatalogMenuComponent } from './components/catalog-menu/catalog-menu.component';
+import { CatalogMenuComponent } from './components/catalog/catalog-menu/catalog-menu.component';
 import { SalesOrderListComponent } from './components/sales-order-list/sales-order-list.component';
 import { PurchaseOrderListComponent } from './components/purchase-order-list/purchase-order-list.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
@@ -15,11 +15,11 @@ import { InventoryAuditComponent } from './components/inventory-audit/inventory-
 import { UserListComponent } from './components/user-list/user-list.component';
 import { LumberCategoryService } from './services/lumber-category.service';
 import { LumberSubCategoryService } from './services/lumber-sub-category.service';
-import { LumberCategoryFormComponent } from './components/lumber-category-form/lumber-category-form.component';
-import { LumberSubCategoryListComponent } from './components/lumber-sub-category-list/lumber-sub-category-list.component';
+import { LumberCategoryFormComponent } from './components/catalog/lumber-category-form/lumber-category-form.component';
+import { LumberCatalogSubCategoryComponent } from './components/catalog/lumber-catalog-sub-category/lumber-catalog-sub-category.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { RouterService } from './services/router.service';
-import { LumberCatalogItemComponent } from './components/lumber-catalog-item/lumber-catalog-item.component';
+import { LumberCatalogCategoryComponent } from './components/catalog/lumber-catalog-category/lumber-catalog-category.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'catalog', pathMatch: 'full' },
@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'catalog', component: CatalogMenuComponent, data: {title: 'Product Catalog'} },
   {
     path: 'catalog/lumber-category',
-    component: LumberCatalogItemComponent,
+    component: LumberCatalogCategoryComponent,
     data: {title: 'Product Catalog'},
     children: [
       { path: '', redirectTo: 'add', pathMatch: 'full' },
@@ -36,10 +36,11 @@ const routes: Routes = [
   },
   { 
     path: 'catalog/lumber-category/:lumberCategoryId',
-    component: LumberCatalogItemComponent,
+    component: LumberCatalogCategoryComponent,
     children: [
       { path: '', redirectTo: 'edit', pathMatch: 'full' },
-      { path: 'edit', component: LumberCategoryFormComponent }
+      { path: 'edit', component: LumberCategoryFormComponent },
+      { path: 'sub-categories', component: LumberCatalogSubCategoryComponent }
     ],
     data: {title: 'Product Catalog'}
   },
@@ -60,9 +61,9 @@ const routes: Routes = [
     InventoryAuditComponent,
     UserListComponent,
     LumberCategoryFormComponent,
-    LumberSubCategoryListComponent,
+    LumberCatalogSubCategoryComponent,
     PageHeaderComponent,
-    LumberCatalogItemComponent
+    LumberCatalogCategoryComponent
   ],
   imports: [
     BrowserAnimationsModule,
