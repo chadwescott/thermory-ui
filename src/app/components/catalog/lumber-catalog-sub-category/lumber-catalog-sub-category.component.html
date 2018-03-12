@@ -13,6 +13,12 @@
             <i class="fas fa-list"></i> Types
           </button>
         </span>
+        <button mat-menu-item (click)="routerService.showCatalogLumberCategory(lumberSubCategoryService.lumberCategory.id)">
+          <i class="fas fa-arrow-left"></i> Back to {{lumberSubCategoryService.lumberCategory.name}}
+        </button>
+        <button mat-menu-item (click)="routerService.showCatalog()">
+          <i class="fas fa-arrow-left"></i> Back to Catalog
+        </button>
         <mat-menu #typeMenu>
           <!-- <div>
             <button mat-menu-item (click)="routerService.showCatalogLumberSubSubCategory(lumberSubSubCategoryService.lumberSubCategory.id)">
@@ -26,7 +32,7 @@
           </div> -->
         </mat-menu>
       </mat-menu>
-      <span>{{title}}</span>
+      <span>{{lumberSubCategoryService.lumberCategory.name}}: {{title}}</span>
     </div>
   </mat-card-title>
   <mat-card-content>

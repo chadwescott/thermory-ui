@@ -14,6 +14,7 @@ export class LumberSubCategoryFormComponent implements OnInit {
   lumberSubCategoryClone: LumberSubCategory;
 
   constructor(private lumberSubCategoryService: LumberSubCategoryService, private routerService: RouterService) {
+    this.lumberSubCategoryService.lumberSubCategoryLoaded.subscribe(sc => this.initialize());
   }
 
   ngOnInit() {
@@ -34,6 +35,6 @@ export class LumberSubCategoryFormComponent implements OnInit {
   save() {
     this.lumberSubCategoryService.save(this.lumberSubCategoryClone);
     this.lumberSubCategoryService.lumberSubCategory = this.lumberSubCategoryClone;
-    this.routerService.showEditLumberSubCategory(this.lumberSubCategoryService.lumberCategory.id, this.lumberSubCategoryService.lumberSubCategory.id);
+    this.routerService.showEditLumberSubCategory(this.lumberSubCategoryService.lumberSubCategory.id);
   }
 }

@@ -42,17 +42,17 @@ const routes: Routes = [
       { path: '', redirectTo: 'edit', pathMatch: 'full' },
       { path: 'edit', component: LumberCategoryFormComponent },
       { path: 'sub-categories', redirectTo: 'sub-categories/add', pathMatch: 'full' },
-      { path: 'sub-categories/add', component: LumberCatalogSubCategoryComponent },
-      {
-        path: 'sub-categories/:lumberSubCategoryId',
-        component: LumberCatalogSubCategoryComponent,
-        children: [
-          { path: '', redirectTo: 'edit', pathMatch: 'full' },
-          { path: 'edit', component: LumberSubCategoryFormComponent }
-        ]
-      }
+      { path: 'sub-categories/add', component: LumberCatalogSubCategoryComponent }
     ],
     data: {title: 'Product Catalog'}
+  },
+  {
+    path: 'catalog/sub-categories/:lumberSubCategoryId',
+    component: LumberCatalogSubCategoryComponent,
+    children: [
+      { path: '', redirectTo: 'edit', pathMatch: 'full' },
+      { path: 'edit', component: LumberSubCategoryFormComponent }
+    ]
   },
   { path: 'incoming', component: PurchaseOrderListComponent, data: {title: 'Incoming Orders'} },
   { path: 'inventory', component: InventoryComponent, data: {title: 'Inventory'} },

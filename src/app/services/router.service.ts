@@ -50,13 +50,14 @@ export class RouterService {
     this.changePage(route);
   }
 
-  showEditLumberSubCategory(categoryId: string, subCategoryId: string) {
-    let route = 'catalog/lumber-categories/' + categoryId + '/sub-categories/' + subCategoryId + '/edit';
+  showEditLumberSubCategory(id: string) {
+    let route = 'catalog/sub-categories/' + id + '/edit';
     this.changePage(route);
   }
 
-  showCatalogLumberSubCategory(categoryId: string, subCategoryId: string) {
-    this.changePage('catalog/lumber-categories/' + categoryId + '/sub-categories/' + subCategoryId);
+  showCatalogLumberSubCategory(id: string) {
+    console.log(id);
+    this.changePage('catalog/sub-categories/' + id);
   }
 
   showInventory() {

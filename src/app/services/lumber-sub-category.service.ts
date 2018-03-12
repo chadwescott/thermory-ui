@@ -7,7 +7,11 @@ import { LumberCategoryService } from './lumber-category.service';
 export class LumberSubCategoryService {
   @Output() lumberSubCategoryLoaded = new EventEmitter<LumberSubCategory>();
   @Output() lumberSubCategorySaved = new EventEmitter<LumberSubCategory>();
-  lumberSubCategories: LumberSubCategory[];
+  lumberSubCategories = [
+    new LumberSubCategory('1', '1', '1 x 6 Ash Decking', 150, 20, 4, 1.35, 1),
+    new LumberSubCategory('2', '1', '5/4 x 6 Ash Decking', 145, 26, 3, 1.7, 2),
+    new LumberSubCategory('3', '1', '5/4 x 6 Ash Decking Slim', 130, 26, 3, 1.52, 3)
+  ];
   lumberCategory: LumberCategory;
   lumberSubCategory: LumberSubCategory;
 
@@ -31,6 +35,7 @@ export class LumberSubCategoryService {
     let i = this.lumberSubCategories.findIndex(c => c.id == id);
     this.lumberSubCategory = i >= 0 ? this.lumberSubCategories[i] : null;
     this.lumberSubCategoryLoaded.emit(this.lumberSubCategory);
+    this.lumberCategoryService.load(this.lumberSubCategory.lumberCategoryId);
   }
 
   save(lumberSubCategory: LumberSubCategory) {
