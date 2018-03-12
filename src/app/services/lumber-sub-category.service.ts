@@ -16,6 +16,8 @@ export class LumberSubCategoryService {
   }
 
   private loadSubCategoriesByCategory(lumberCategory: LumberCategory) {
+    if (lumberCategory == null)
+      return;
     this.lumberCategory = lumberCategory;
     let id = this.lumberCategory.id;
     this.lumberSubCategories = [
