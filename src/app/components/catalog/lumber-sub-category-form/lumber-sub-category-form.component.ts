@@ -21,7 +21,13 @@ export class LumberSubCategoryFormComponent implements OnInit {
     this.initialize();
   }
 
-  initialize() {
+  private initialize() {
+    this.initializeSortOrderOptions();
+    this.lumberSubCategoryClone = this.lumberSubCategoryService.lumberSubCategory.clone();
+  }
+
+  private initializeSortOrderOptions() {
+    this.sortOrderOptions = [];
     for(let i = 1; i <= this.lumberSubCategoryService.lumberSubCategories.length; i++) {
       this.sortOrderOptions.push(i);
     }
@@ -29,12 +35,12 @@ export class LumberSubCategoryFormComponent implements OnInit {
     if (this.lumberSubCategoryService.lumberSubCategory.id == null) {
       this.sortOrderOptions.push(this.lumberSubCategoryService.lumberSubCategory.sortOrder);
     }
-    this.lumberSubCategoryClone = this.lumberSubCategoryService.lumberSubCategory.clone();
   }
 
-  save() {
+  private save() {
     this.lumberSubCategoryService.save(this.lumberSubCategoryClone);
     this.lumberSubCategoryService.lumberSubCategory = this.lumberSubCategoryClone;
     this.routerService.showEditLumberSubCategory(this.lumberSubCategoryService.lumberSubCategory.id);
+    // this.initialize();
   }
 }

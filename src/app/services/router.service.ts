@@ -56,7 +56,6 @@ export class RouterService {
   }
 
   showCatalogLumberSubCategory(id: string) {
-    console.log(id);
     this.changePage('catalog/sub-categories/' + id);
   }
 

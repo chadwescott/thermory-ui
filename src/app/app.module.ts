@@ -21,6 +21,8 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
 import { RouterService } from './services/router.service';
 import { LumberCatalogCategoryComponent } from './components/catalog/lumber-catalog-category/lumber-catalog-category.component';
 import { LumberSubCategoryFormComponent } from './components/catalog/lumber-sub-category-form/lumber-sub-category-form.component';
+import { RepositoryService } from './services/repository.service';
+import { MockRepositoryService } from './services/mock-repository.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'catalog', pathMatch: 'full' },
@@ -97,6 +99,10 @@ const routes: Routes = [
   providers: [
     LumberCategoryService,
     LumberSubCategoryService,
+    {
+      provide: RepositoryService,
+      useClass: MockRepositoryService
+    },
     RouterService
   ],
   bootstrap: [AppComponent]
