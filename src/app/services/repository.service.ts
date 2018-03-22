@@ -4,7 +4,10 @@ import { LumberSubCategory } from '../models/lumber-sub-category';
 
 @Injectable()
 export abstract class RepositoryService {
-  lumberCategories: LumberCategory[];
-
-  constructor() { }
+  constructor() {}
+  abstract saveLumberCategory(category: LumberCategory): LumberCategory;
+  abstract getLumberCategories(): LumberCategory[];
+  abstract getLumberCategoryBySubCategoryId(id: string) : LumberCategory;
+  abstract getLumberSubCategoriesByCategoryId(categoryId: string) : LumberSubCategory[];
+  abstract getLumberSubCategoryById(id: string) : LumberSubCategory;
 }

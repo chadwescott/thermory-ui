@@ -54,7 +54,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'edit', pathMatch: 'full' },
       { path: 'edit', component: LumberSubCategoryFormComponent }
-    ]
+    ],
+    data: {title: 'Product Catalog'}
   },
   { path: 'incoming', component: PurchaseOrderListComponent, data: {title: 'Incoming Orders'} },
   { path: 'inventory', component: InventoryComponent, data: {title: 'Inventory'} },

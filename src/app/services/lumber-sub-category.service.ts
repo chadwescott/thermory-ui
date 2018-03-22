@@ -2,6 +2,7 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { LumberSubCategory } from '../models/lumber-sub-category';
 import { LumberCategory } from '../models/lumber-category';
 import { LumberCategoryService } from './lumber-category.service';
+import { RepositoryService } from './repository.service';
 
 @Injectable()
 export class LumberSubCategoryService {
@@ -11,7 +12,7 @@ export class LumberSubCategoryService {
   lumberCategory: LumberCategory;
   lumberSubCategory: LumberSubCategory;
 
-  constructor(private lumberCategoryService: LumberCategoryService) {
+  constructor(private lumberCategoryService: LumberCategoryService, private repository: RepositoryService) {
     this.lumberCategoryService.categoryLoaded.subscribe(lumberCategory => this.loadSubCategoriesByCategory(lumberCategory));
   }
 
@@ -19,25 +20,22 @@ export class LumberSubCategoryService {
     if (lumberCategory == null)
       return;
     this.lumberCategory = lumberCategory;
-    let id = this.lumberCategory.id;
-    this.loadMockSubCategories(id);
+    this.loadLumberSubCategories();
   }
 
-  private loadMockSubCategories(categoryId: string) {
-    this.lumberSubCategories = [
-      new LumberSubCategory('1', categoryId, '1 x 6 Ash Decking', 150, 20, 4, 1.35, 1),
-      new LumberSubCategory('2', categoryId, '5/4 x 6 Ash Decking', 145, 26, 3, 1.7, 2),
-      new LumberSubCategory('3', categoryId, '5/4 x 6 Ash Decking Slim', 130, 26, 3, 1.52, 3)
-    ];
+  private loadLumberSubCategories() {
+    this.lumberSubCategories = this.repository.getLumberSubCategoriesByCategoryId(this.lumberCategory.id);
   }
 
   load(id: string) {
-    if (this.lumberSubCategories == null)
-      this.loadMockSubCategories('1');
-    let i = this.lumberSubCategories.findIndex(c => c.id == id);
-    this.lumberSubCategory = i >= 0 ? this.lumberSubCategories[i] : null;
+    this.lumberCategory = this.repository.getLumberCategoryBySubCategoryId(id);
+    if (this.lumberCategory == null)
+      return;
+    
+    this.lumberSubCategories = this.lumberCategory.lumberSubCategories;
+    this.lumberSubCategory = this.lumberSubCategories.find(s => s.id == id);
+
     this.lumberSubCategoryLoaded.emit(this.lumberSubCategory);
-    this.lumberCategoryService.load(this.lumberSubCategory.lumberCategoryId);
   }
 
   save(lumberSubCategory: LumberSubCategory) {

@@ -7,10 +7,11 @@ export class LumberCategoryService {
   @Output() categoryLoaded = new EventEmitter<LumberCategory>();
   @Output() categorySaved = new EventEmitter();
 
-  lumberCategories: LumberCategory[] = this.repository.lumberCategories;
+  lumberCategories: LumberCategory[];
   lumberCategory: LumberCategory;
 
   constructor(private repository: RepositoryService) {
+    this.lumberCategories = this.repository.getLumberCategories();
   }
 
   load(id: string) {
@@ -20,19 +21,7 @@ export class LumberCategoryService {
   }
 
   save(lumberCategory: LumberCategory) {
-    if (lumberCategory.id == null) {
-      lumberCategory.id = (this.lumberCategories.length + 1).toString();
-      this.lumberCategories.push(lumberCategory);
-    } else {
-      this.updateCategory(lumberCategory);
-    }
-    this.lumberCategory = lumberCategory;
+    this.lumberCategory = this.repository.saveLumberCategory(lumberCategory);
     this.categorySaved.emit();
-  }
-
-  updateCategory(lumberCategory: LumberCategory) {
-    let i = this.lumberCategories.findIndex(c => c.id == lumberCategory.id);
-    if (i >= 0)
-      this.lumberCategories[i] = lumberCategory;
   }
 }

@@ -5,6 +5,42 @@ import { LumberSubCategory } from '../models/lumber-sub-category';
 
 @Injectable()
 export class MockRepositoryService extends RepositoryService {
+  private lumberCategories: LumberCategory[];
+
+  getLumberCategories(): LumberCategory[] {
+    return this.lumberCategories;
+  }
+
+  getLumberCategoryBySubCategoryId(id: string): LumberCategory {
+    return this.lumberCategories.find(c => c.lumberSubCategories.find(s => s.id == id).id == c.id);
+  }
+
+  getLumberSubCategoriesByCategoryId(categoryId: string): LumberSubCategory[] {
+    let category = this.lumberCategories.filter(c => c.id == categoryId);
+    return category.length == 1 ? category[0].lumberSubCategories : null;
+  }
+
+  getLumberSubCategoryById(id: string): LumberSubCategory {
+    let category = this.getLumberCategoryBySubCategoryId(id);
+    return category == null ? null : category.lumberSubCategories.find(s => s.id == id);
+  }
+
+  saveLumberCategory(category: LumberCategory): LumberCategory {
+    if (category.id == null) {
+      category.id = (this.lumberCategories.length + 1).toString();
+      this.lumberCategories.push(category);
+    } else {
+      this.updateCategory(category);
+    }
+    return category;
+  }
+
+  private updateCategory(lumberCategory: LumberCategory) {
+    let i = this.lumberCategories.findIndex(c => c.id == lumberCategory.id);
+    if (i >= 0)
+      this.lumberCategories[i] = lumberCategory;
+  }
+
   constructor() {
     super();
     this.lumberCategories = [
